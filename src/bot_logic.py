@@ -36,7 +36,8 @@ async def search_data(message: Message):
             hour = {"dt_from": "2022-02-01T00:00:00", "dt_upto": "2022-02-02T00:00:00", "group_type": "hour"}
             await message.answer(f"Допустимо отправлять только следующие запросы: \n{mounth} \n{day} \n{hour}")
         else:
-            await message.answer(str(result))
+            json_result = json.dumps(result)
+            await message.answer(json_result)
     except Exception:
         mounth = {"dt_from": "2022-09-01T00:00:00", "dt_upto": "2022-12-31T23:59:00", "group_type": "month"}
         day = {"dt_from": "2022-10-01T00:00:00", "dt_upto": "2022-11-30T23:59:00", "group_type": "day"}
